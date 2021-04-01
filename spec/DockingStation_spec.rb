@@ -33,7 +33,13 @@ describe DockingStation do
 
     it "raises an error when there is more than 20 bikes at the docking station." do
       subject.docking(Bike.new)
-      expect { 20.times { subject.docking(Bike.new) } }.to raise_error("The docking station is full")
+      expect { ::DEFAULT_CAPACITY.times { subject.docking(Bike.new) } }.to raise_error("The docking station is full")
+    end
+  end
+
+  describe "#initialize" do
+    it "should create a constant called capacity when initialized" do
+      expect(subject.capacity).to eq (subject.capacity)
     end
   end
 end
